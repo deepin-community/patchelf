@@ -1,0 +1,115 @@
+patchelf (0.12-1) unstable; urgency=medium
+
+  * New upstream version
+  * Refresh patches for new release
+
+ -- Felipe Sateler <fsateler@debian.org>  Sat, 29 Aug 2020 12:03:40 -0400
+
+patchelf (0.11-2) unstable; urgency=medium
+
+  * The brown paper bag release
+  * Update docs to install README.md instead of README
+
+ -- Felipe Sateler <fsateler@debian.org>  Sun, 14 Jun 2020 12:10:14 -0400
+
+patchelf (0.11-1) unstable; urgency=medium
+
+  * New upstream version 0.11
+    - More modern C++ has avoided a memory leak (Closes: #816468)
+    - force-rpath is now consistently used (Closes: #816467)
+  * Set field Upstream-Contact in debian/copyright.
+  * Set upstream metadata fields: Bug-Submit.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
+  * Update standards version to 4.5.0, no changes needed.
+  * Drop patches picked from upstream
+  * Fix set-rpath corrupting binaries on mips.
+    Pick a couple of proposed upstream patches to address the mips set-rpath
+    failures.
+    (Closes: #821435)
+
+ -- Felipe Sateler <fsateler@debian.org>  Sat, 13 Jun 2020 14:41:30 -0400
+
+patchelf (0.10-2) unstable; urgency=medium
+
+  * Use secure URI in Homepage field.
+  * Update standards version, no changes needed.
+  * Bump debhelper from old 11 to 12.
+  * Set upstream metadata fields: Name.
+  * Upload to unstable.
+
+ -- Felipe Sateler <fsateler@debian.org>  Sat, 27 Jul 2019 08:34:41 -0400
+
+patchelf (0.10-1) experimental; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/copyright: Use https protocol in Format field
+
+  [ Felipe Sateler ]
+  * New upstream version
+    - Refresh patches
+  * Bump Standards-Version (no changes needed)
+  * Release to experimental due to freeze
+
+ -- Felipe Sateler <fsateler@debian.org>  Thu, 18 Apr 2019 20:13:49 -0400
+
+patchelf (0.9+52.20180509-1) unstable; urgency=medium
+
+  [ Felipe Sateler ]
+  * Package an upstream git snapshot
+    - Makes some binaries strippable after patching (Closes: #903396)
+  * no-rpath-prebuild: force pagesize to 4096 on prebuilt binaries.
+    They all have that page size, and the host-detected one might be
+    different.
+  * Update watchfile
+    - Use format version 4
+    - Use github as source page
+  * Migrate to salsa for hosting
+  * Bump debhelper compat to 11.
+    Also switch to the debhelper-compat virtual package
+  * Bump Standards-Version
+  * Enable hardening flags
+
+  [ Drew Parsons ]
+  * add new patch adjust_startPage_issue127_commit1cc234fea.patch from
+    upstream Issue #127. Fixes build-time tests.
+
+ -- Felipe Sateler <fsateler@debian.org>  Fri, 28 Sep 2018 17:20:09 -0300
+
+patchelf (0.9-1) unstable; urgency=medium
+
+  * New upstream release
+    - Drop all patches, applied upstream
+    - No longer breaks hardlinks (Closes: #759497)
+  * Force pagesize for no-rpath-prebuild test: We know the page size,
+    and it may be different from system one
+
+ -- Felipe Sateler <fsateler@debian.org>  Mon, 29 Feb 2016 17:32:24 -0300
+
+patchelf (0.8-4) unstable; urgency=medium
+
+  * Disable no-rpath.sh test, as it may fail when the binary is of foreign
+    architecture. Really Closes: #799880
+
+ -- Felipe Sateler <fsateler@debian.org>  Sun, 15 Nov 2015 16:05:13 -0300
+
+patchelf (0.8-3) unstable; urgency=medium
+
+  * Pick upstream commit to use a dynamic page size. Fixes FTBFS on ppc64el.
+    Closes: #799880
+
+ -- Felipe Sateler <fsateler@debian.org>  Thu, 12 Nov 2015 20:29:11 -0300
+
+patchelf (0.8-2) unstable; urgency=medium
+
+  * Document --remove-needed in manpage
+  * Fix typo in manpage. Closes: #742468
+     Thanks Gianluigi Tiesi
+
+ -- Felipe Sateler <fsateler@debian.org>  Fri, 28 Mar 2014 15:28:41 -0300
+
+patchelf (0.8-1) unstable; urgency=low
+
+  * Initial release (Closes: #742049)
+
+ -- Felipe Sateler <fsateler@debian.org>  Tue, 18 Mar 2014 12:57:47 -0300
