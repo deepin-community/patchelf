@@ -1,10 +1,6 @@
 #! /bin/sh -e
-SCRATCH=scratch/$(basename $0 .sh)
-
-if ! command -v readelf >/dev/null; then
-    echo "No readelf found; skip test"
-    exit 0
-fi
+SCRATCH=scratch/$(basename "$0" .sh)
+READELF=${READELF:-readelf}
 
 rm -rf "${SCRATCH}"
 mkdir -p "${SCRATCH}"
@@ -16,4 +12,6 @@ long_rpath="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ../src/patchelf \
   --set-rpath "$long_rpath" "${SCRATCH}/libbuildid.so"
 
-readelf -n "${SCRATCH}/libbuildid.so" | grep -q "Build ID"
+# older readelf versions do not recognize build id, but we can grep by constant
+LANG=en_US
+${READELF} -n "${SCRATCH}/libbuildid.so" |  grep -q -F -e 'Build ID' -e 'Unknown note type: (0x00000003)'

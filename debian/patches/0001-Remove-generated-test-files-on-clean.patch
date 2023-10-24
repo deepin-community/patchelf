@@ -1,0 +1,21 @@
+From: Felipe Sateler <fsateler@debian.org>
+Date: Thu, 17 Aug 2023 22:13:15 -0400
+Subject: Remove generated test files on clean
+
+---
+ tests/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index a68d2e2..0d56a60 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -66,7 +66,7 @@ TESTS_ENVIRONMENT = PATCHELF_DEBUG=1 STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) READELF=$
+ $(no_rpath_arch_TESTS): no-rpath-prebuild.sh
+ 	@ln -s $< $@
+ 
+-CLEANFILES = big-dynstr.c
++CLEANFILES = big-dynstr.c libbig-dynstr.so libbig-dynstr.debug many-syms-main.c many-syms.c
+ clean-local:
+ 	$(RM) -r scratch $(no_rpath_arch_TESTS)
+ 
