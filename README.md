@@ -70,6 +70,7 @@ libraries.  In particular, it can do the following:
 
 ## Compiling and Testing
 
+### Via Autotools
 ```console
 ./bootstrap.sh
 ./configure
@@ -77,6 +78,13 @@ make
 make check
 sudo make install
 ```
+### Via Nix
+
+You can build with Nix in several ways.
+
+1. Building via `nix build` will produce the result in `./result/bin/patchelf`. If you would like to build _patchelf_ with _musl_ try `nix build .#patchelf-musl`
+
+2. You can launch a development environment with `nix develop` and follow the autotools steps above. If you would like to develop with _musl_ try `nix develop .#musl`
 
 ## Author
 
@@ -96,104 +104,3 @@ General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-## Release History
-
-0.12 (August 27, 2020):
-
-* New `--clear-symbol-version` flag.
-
-* Better support for relocating NOTE sections/segments.
-
-* Improved the default section alignment choice.
-
-* Bug fixes.
-
-0.11 (June 9, 2020):
-
-* New `--output` flag.
-
-* Some bug fixes.
-
-0.10 (March 28, 2019):
-
-* Many bug fixes. Please refer to the Git commit log:
-
-    https://github.com/NixOS/patchelf/commits/master
-
-  This release has contributions from Adam Trhoň, Benjamin Hipple,
-  Bernardo Ramos, Bjørn Forsman, Domen Kožar, Eelco Dolstra, Ezra
-  Cooper, Felipe Sateler, Jakub Wilk, James Le Cuirot, Karl Millar,
-  Linus Heckemann, Nathaniel J. Smith, Richard Purdie, Stanislav
-  Markevich and Tuomas Tynkkynen.
-
-0.9 (February 29, 2016):
-
-* Lots of new features. Please refer to the Git commit log:
-
-    https://github.com/NixOS/patchelf/commits/master
-
-  This release has contributions from Aaron D. Marasco, Adrien
-  Devresse, Alexandre Pretyman, Changli Gao, Chingis Dugarzhapov,
-  darealshinji, David Sveningsson, Eelco Dolstra, Felipe Sateler,
-  Jeremy Sanders, Jonas Kuemmerlin, Thomas Tuegel, Tuomas Tynkkynen,
-  Vincent Danjean and Vladimír Čunát.
-
-0.8 (January 15, 2014):
-
-* Fix a segfault caused by certain illegal entries in symbol tables.
-
-0.7 (January 7, 2014):
-
-* Rewrite section indices in symbol tables. This for instance allows
-  gdb to show proper backtraces.
-
-* Added `--remove-needed' option.
-
-0.6 (November 7, 2011):
-
-* Hacky support for executables created by the Gold linker.
-
-* Support segments with an alignment of 0 (contributed by Zack
-  Weinberg).
-
-* Added a manual page (contributed by Jeremy Sanders
-  <jeremy@jeremysanders.net>).
-
-0.5 (November 4, 2009):
-
-* Various bugfixes.
-
-* `--force-rpath' now deletes the DT_RUNPATH if it is present.
-
-0.4 (June 4, 2008):
-
-* Support for growing the RPATH on dynamic libraries.
-
-* IA-64 support (not tested) and related 64-bit fixes.
-
-* FreeBSD support.
-
-* `--set-rpath', `--shrink-rpath' and `--print-rpath' now prefer
-  DT_RUNPATH over DT_RPATH, which is obsolete.  When updating, if both
-  are present, both are updated.  If only DT_RPATH is present, it is
-  converted to DT_RUNPATH unless `--force-rpath' is specified.  If
-  neither is present, a DT_RUNPATH is added unless `--force-rpath' is
-  specified, in which case a DT_RPATH is added.
-
-0.3 (May 24, 2007):
-
-* Support for 64-bit ELF binaries (such as on x86_64-linux).
-
-* Support for big-endian ELF binaries (such as on powerpc-linux).
-
-* Various bugfixes.
-
-0.2 (January 15, 2007):
-
-* Provides a hack to get certain programs (such as the
-  Belastingaangifte 2005) to work.
-
-0.1 (October 11, 2005):
-
-* Initial release.

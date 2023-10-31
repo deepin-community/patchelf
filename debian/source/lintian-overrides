@@ -1,0 +1,6 @@
+# Test cases are manually crafted and prebuilt binaries
+patchelf source: binary-with-bad-dynamic-table [tests/*]
+patchelf source: source-is-missing [tests/*]
+patchelf source: source-is-missing [tests/*/*]
+patchelf source: elf-error
+
