@@ -10,6 +10,7 @@ Vcs-Browser: https://salsa.debian.org/debian/patchelf
 
 Package: patchelf
 Architecture: any
+Multi-Arch: foreign
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: modify properties of ELF executables
  PatchELF is a simple utility for modifying existing ELF executables and

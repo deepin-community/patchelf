@@ -1,3 +1,25 @@
+patchelf (0.18.0-1) unstable; urgency=medium
+
+  [ Felipe Sateler ]
+  * New upstream release
+  * Remove test files on clean (Closes: #1046039)
+
+  [ Helmut Grohne ]
+  * Mark patchelf Multi-Arch: foreign (Closes: #1026121)
+
+  [ Felipe Sateler ]
+  * Add lintian-override for test binaries
+
+ -- Felipe Sateler <fsateler@debian.org>  Fri, 18 Aug 2023 00:04:34 -0400
+
+patchelf (0.14.3-1) unstable; urgency=medium
+
+  [ Felipe Sateler ]
+  * New upstream release (Closes: #1001287)
+    - Drop all patches, merged upstream
+
+ -- Felipe Sateler <fsateler@debian.org>  Sun, 12 Dec 2021 13:30:06 -0300
+
 patchelf (0.12-1) unstable; urgency=medium
 
   * New upstream version
